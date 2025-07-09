@@ -34,7 +34,7 @@
     .carta {
       width: 250px;
       height: 180px;
-      background: url('/mnt/data/815d122f-1822-4465-8807-e2a8e9ef5d70.png') no-repeat center center;
+      background: url('https://i.imgur.com/kECZPdv.png') no-repeat center center;
       background-size: cover;
       border-radius: 8px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -42,6 +42,7 @@
       align-items: center;
       justify-content: center;
       position: relative;
+      overflow: hidden;
     }
 
     .papel {
@@ -59,6 +60,7 @@
       text-align: center;
       box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
       animation: aparecer 0.5s ease forwards;
+      z-index: 1;
     }
 
     @keyframes aparecer {
@@ -74,6 +76,7 @@
       border: none;
       border-radius: 8px;
       cursor: pointer;
+      z-index: 2;
     }
 
     .boton:hover {
@@ -105,19 +108,18 @@
 
   <div class="fecha">19-09-22</div>
 
-  <!-- Se agregó preload, autoplay y muted para evitar bloqueo del navegador -->
-  <audio id="musica" preload="auto" autoplay muted>
-    <source src="https://dl.dropboxusercontent.com/scl/fi/rh8fueyb3b9kkfd9a4apd/querida-lara-jean.mp3?rlkey=y6g6vkrvs4pwyz3is7mhs8c2d&st=exm7k1i6&raw=1" type="audio/mpeg">
+  <audio id="musica" preload="auto" muted autoplay>
+    <source src="https://rodri-mp3.netlify.app/querida-lara-jean.mp3" type="audio/mpeg">
     Tu navegador no soporta audio.
   </audio>
 
   <script>
     const musica = document.getElementById('musica');
     musica.volume = 1;
-    musica.muted = false;
 
     function mostrarNota() {
       document.getElementById('papel').style.display = 'block';
+      musica.muted = false;
       musica.play().catch((e) => console.log("Reproducción bloqueada: ", e));
     }
   </script>
